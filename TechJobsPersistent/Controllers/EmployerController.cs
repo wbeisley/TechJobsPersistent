@@ -60,7 +60,7 @@ namespace TechJobsPersistent.Controllers
                     context.SaveChanges();
                 }
 
-                return Redirect("Employer");
+                return Redirect("/Employer/");
             }
 
             return View("Add", viewModel);
