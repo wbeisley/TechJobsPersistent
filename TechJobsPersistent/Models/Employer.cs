@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace TechJobsPersistent.Models
 {
     public class Employer
     {
-        public int Id { get; set; }
+        [Key]
+        public int EmployerId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
 

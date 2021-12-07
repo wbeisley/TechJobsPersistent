@@ -35,14 +35,14 @@ namespace TechJobsPersistent.Controllers
 
             if (string.IsNullOrEmpty(searchTerm))
             {
-                jobs = context.Jobs
+                jobs = context.Job
                    .Include(j => j.Employer)
                    .ToList();
 
                 foreach (var job in jobs)
                 {
                     List<JobSkill> jobSkills = context.JobSkills
-                        .Where(js => js.JobId == job.Id)
+                        .Where(js => js.JobId == job.JobsId)
                         .Include(js => js.Skill)
                         .ToList();
 
@@ -54,7 +54,7 @@ namespace TechJobsPersistent.Controllers
             {
                 if (searchType == "employer")
                 {
-                    jobs = context.Jobs
+                    jobs = context.Job
                         .Include(j => j.Employer)
                         .Where(j => j.Employer.Name == searchTerm)
                         .ToList();
@@ -62,7 +62,7 @@ namespace TechJobsPersistent.Controllers
                     foreach (Job job in jobs)
                     {
                         List<JobSkill> jobSkills = context.JobSkills
-                        .Where(js => js.JobId == job.Id)
+                        .Where(js => js.JobId == job.JobsId)
                         .Include(js => js.Skill)
                         .ToList();
 
@@ -80,12 +80,12 @@ namespace TechJobsPersistent.Controllers
 
                     foreach (var job in jobSkills)
                     {
-                        Job foundJob = context.Jobs
+                        Job foundJob = context.Job
                             .Include(j => j.Employer)
-                            .Single(j => j.Id == job.JobId);
+                            .Single(j => j.JobsId == job.JobId);
 
                         List<JobSkill> displaySkills = context.JobSkills
-                            .Where(js => js.JobId == foundJob.Id)
+                            .Where(js => js.JobId == foundJob.JobsId)
                             .Include(js => js.Skill)
                             .ToList();
 

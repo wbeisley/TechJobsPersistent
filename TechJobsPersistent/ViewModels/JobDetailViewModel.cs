@@ -13,7 +13,7 @@ namespace TechJobsPersistent.ViewModels
 
         public JobDetailViewModel(Job theJob, List<JobSkill> jobSkills)
         {
-            JobId = theJob.Id;
+            JobId = theJob.JobsId;
             Name = theJob.Name;
             EmployerName = theJob.Employer.Name;
 

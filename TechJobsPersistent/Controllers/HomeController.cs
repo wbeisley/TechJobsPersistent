@@ -24,7 +24,7 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult Index()
         {
-            List<Job> jobs = context.Jobs.Include(j => j.Employer).ToList();
+            List<Job> jobs = context.Job.Include(j => j.Employer).ToList();
 
             return View(jobs);
         }
@@ -43,19 +43,16 @@ namespace TechJobsPersistent.Controllers
 
                 string name = viewModel.Name;
 
-                List<Employer> existingItems = context.Employers
-                    .Where(e => e.Name == name)
-                    .ToList();
-
-                if (existingItems.Count == 0)
+                Job newJob = new Job
                 {
-                    Employer employer = new Employer
-                    {
-                        Name = name
-                    };
-                    context.Employers.Add(employer);
+                    Name = viewModel.Name,
+                    EmployerId = viewModel.EmployerId,
+                    Employer = context.Employers.Find(viewModel.EmployerList)
+                };
+
+                    context.Job.Add(newJob);
                     context.SaveChanges();
-                }
+               
 
                 return Redirect("/Employer/");
             }
@@ -66,9 +63,9 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult Detail(int id)
         {
-            Job theJob = context.Jobs
+            Job theJob = context.Job
                 .Include(j => j.Employer)
-                .Single(j => j.Id == id);
+                .Single(j => j.JobsId == id);
 
             List<JobSkill> jobSkills = context.JobSkills
                 .Where(js => js.JobId == id)

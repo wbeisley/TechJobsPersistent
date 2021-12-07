@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace TechJobsPersistent.Models
 {
     public class Job
     {
-        public int Id { get; set; }
+        [Key]
+        public int JobsId { get; set; }
 
         public string Name { get; set; }
 

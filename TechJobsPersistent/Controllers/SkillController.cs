@@ -49,7 +49,7 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult AddJob(int id)
         {
-            Job theJob = context.Jobs.Find(id);
+            Job theJob = context.Job.Find(id);
             List<Skill> possibleSkills = context.Skills.ToList();
             AddJobSkillViewModel viewModel = new AddJobSkillViewModel(theJob, possibleSkills);
             return View(viewModel);

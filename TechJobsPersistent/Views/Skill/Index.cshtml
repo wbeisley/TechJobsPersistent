@@ -15,7 +15,7 @@ else
             @foreach (Skill skill in Model)
             {
                 <li>
-                    <a asp-controller="Skill" asp-action="About" asp-route-id="@skill.Id">@skill.Name</a>
+                    <a asp-controller="Skill" asp-action="About" asp-route-id="@skill.SkillsId">@skill.Name</a>
                 </li>
             }
         </ul>

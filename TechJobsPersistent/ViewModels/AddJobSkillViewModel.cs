@@ -26,7 +26,7 @@ namespace TechJobsPersistent.ViewModels
             {
                 Skills.Add(new SelectListItem
                 {
-                    Value = skill.Id.ToString(),
+                    Value = skill.SkillsId.ToString(),
                     Text = skill.Name
                 });
             }
