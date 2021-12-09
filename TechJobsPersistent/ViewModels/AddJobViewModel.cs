@@ -12,7 +12,10 @@ namespace TechJobsPersistent.ViewModels
 
         public int EmployerId { get; set; }
 
-        public List<SelectListItem> EmployerList { get; set; }
+        public List<SelectListItem> Employers { get; set; }
 
+        public List<SelectListItem> Skill { get; set; }
+
+       
     }
 }
