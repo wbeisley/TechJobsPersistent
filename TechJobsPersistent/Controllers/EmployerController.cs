@@ -44,12 +44,12 @@ namespace TechJobsPersistent.Controllers
                 {
                     Name = viewModel.Name,
                     Location = viewModel.Location
-                };
+                }; 
 
                 context.Employers.Add(newEmployer);
                 context.SaveChanges();
 
-                return Redirect("Employer");
+                return Redirect("/Employer");
             }
 
             return View("Add", viewModel);
