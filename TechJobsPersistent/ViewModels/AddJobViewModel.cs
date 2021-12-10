@@ -34,10 +34,10 @@ namespace TechJobsPersistent.ViewModels
 
             Skills = skills;
         }
+
         public AddJobViewModel()
         {
-
         }
-       
+
     }
 }
